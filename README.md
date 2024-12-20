@@ -10,7 +10,7 @@ From the project folder execute:
 ```python
 python train.py --model yolov11s.pt --data datasets/didone/data.yaml
 ```
-The checkpoint from the previous step will be saved in `runs/detect/train/weights`. A folder will be created for each training instance, take that into consideration.
+The checkpoint from the previous step will be saved in `runs/detect/train/weights`. A folder will be created for each training instance, take that into consideration. For simplicity, is recomendable to move the checkpoints to the `checkpoints`folder.
 
 ## Testing the model
 From the project folder execute:
