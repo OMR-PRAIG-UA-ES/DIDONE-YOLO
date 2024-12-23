@@ -18,3 +18,7 @@ From the project folder execute:
 python test.py --model PATH_TO_CHECKPOINT --data datasets/didone/data.yaml
 ```
 Where `PATH_TO_CHECKPOINT`is the path to the checkpoint file of the trained YOLO model.
+
+---
+
+This code is part of REPERTORIUM project, funded by the European Union’s Horizon Europe programme under grant agreement No 101095065.
