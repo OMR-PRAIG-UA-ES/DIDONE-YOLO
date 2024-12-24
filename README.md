@@ -1,24 +1,75 @@
-# To train a YOLO model in DIDONE
-## Gather data
-Go to the `datasets/didone`folder and execute the following python command:
+<p align="center">
+  <a href=""><img src="https://i.imgur.com/Iu7CvC1.png" alt="PRAIG-logo" width="100"></a>
+</p>
+
+<h1 align="center">Training a YOLO model for DIDONE</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10.0-orange" alt="Gitter">
+  <img src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white" alt="PyTorch">
+  <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=blue" alt="License">
+</p>
+
+<p align="center">
+  <a href="#about">About</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#acknowledgments">Acknowledgments</a> •
+  <a href="#license">License</a>
+</p>
+
+## About
+
+Describe the work.
+
+## How To Use
+
+To run the code, you'll need to meet certain requirements which are specified in the [`Dockerfile`](Dockerfile). Alternatively, you can set up a virtual environment if preferred. Once you have prepared your environment (either a Docker container or a virtual environment), you are ready to begin. 
+
+### To train a YOLO model in DIDONE
+
+#### $${\color{lightblue} 1. \space Gather \space the \space data}$$
+DIDONE corpus is codified in the [MuRET](https://muret.iuii.ua.es/) format which is used internally to manage OMR data. This codified data can be located at `datasets/didone/files`. To parse the data to a trainable YOLO format, go to the `datasets/didone`folder and execute the following python command:
 
 ```python
 python obtain_data.py
 ```
-## Train the model
+
+For future generations, if you already have the images downloaded you can add the `--only-dicts` option to only regenarate labels and dictionaries of the corpus.
+
+> [!WARNING]
+> Usually, you want to only perform this step once. <br />
+> To train multiple checkpoints, gather data once and repeat step 2.
+
+#### $${\color{lightblue} 2. \space Execute \space the \space training \space script}$$
+
 From the project folder execute:
 ```python
 python train.py --model yolov11s.pt --data datasets/didone/data.yaml
 ```
-The checkpoint from the previous step will be saved in `runs/detect/train/weights`. A folder will be created for each training instance, take that into consideration. For simplicity, is recomendable to move the checkpoints to the `checkpoints`folder.
 
-## Testing the model
-From the project folder execute:
-```python
-python test.py --model PATH_TO_CHECKPOINT --data datasets/didone/data.yaml
-```
-Where `PATH_TO_CHECKPOINT`is the path to the checkpoint file of the trained YOLO model.
+The checkpoint from the previous step will be saved in `runs/detect/train/weights`. A folder will be created for each training instance, take that into consideration. For simplicity, 
+
+> [!TIP]
+> Is recomendable to move the checkpoints to the `checkpoints`folder. This avoids loosing any checkpoints by overriding them and allows quicker access by terminal. Also, rename the file to a proper name as this will help to later on identify the checkpoint source. A good name could include the date of training and the model architecture. As an example `yolov11s_20241210` would be a YOLO v11 model trained with the `small`configuration trained the 10/12/2024.
 
 ---
 
+### To test a YOLO model in DIDONE
+
+> [!WARNING]
+> We assume data is already available from step 1 of the training of the model. If not, repeat step 1 of the previous section before continuing.
+
+From the project folder execute:
+```shell
+python test.py --model PATH_TO_CHECKPOINT --data datasets/didone/data.yaml
+```
+
+Where `PATH_TO_CHECKPOINT`is the path to the checkpoint file of the trained YOLO model.
+
+## Acknowledgments
+
 This code is part of REPERTORIUM project, funded by the European Union’s Horizon Europe programme under grant agreement No 101095065.
+
+## License
+
+This work is under a [MIT](LICENSE) license.
