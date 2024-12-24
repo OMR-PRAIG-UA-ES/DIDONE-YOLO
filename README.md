@@ -32,6 +32,42 @@ This repository complements a separate project dedicated to end-to-end transcrip
 
 To run the code, you'll need to meet certain requirements which are specified in the [`Dockerfile`](Dockerfile). Alternatively, you can set up a virtual environment if preferred. Once you have prepared your environment (either a Docker container or a virtual environment), you are ready to begin. 
 
+> [!IMPORTANT]
+> If you are using MacOS it is recommendable to use a virtual environment rather than docker. There is some known issues between Docker and the Apple OS. If perhaps you still want to use docker, try to use [Colima](https://github.com/abiosoft/colima) as a Docker wrapper.
+
+### Deploying with Docker
+
+#### $${\color{lightblue} 1. \space Build \space the \space image}$$
+
+The first step is to build the Docker image using the provided <ins>Dockerfile</ins>. This image contains all the necessary dependencies and configurations required to run the project.
+
+```shell
+docker build --tag yolo-classical .
+```
+
+Once the image is built, it can be used to create and run containers.
+
+#### $${\color{lightblue} 2. \space Run \space a \space container}$$
+
+Next, create a Docker container from the image built in the previous step. The container serves as an isolated runtime environment for the project.
+
+```shell
+docker run -itd --rm -v ./:/workspace --name yolo yolo-classical
+```
+
+> It is important to mount correctly the volume. It ensures that project data will be consistent between the host and the container.
+
+#### $${\color{lightblue} 3. \space Attach \space to \space the \space container}$$
+
+Finally, attach to the running container to execute commands or monitor its operation.
+
+```shell
+docker attach yolo
+```
+
+>  [!TIP]
+>  To exit the container without stopping it, press `Ctrl + P` followed by `Ctrl + Q`. To reattach later, use the docker attach yolo-doc command.
+
 ### To train a YOLO model in DIDONE
 
 #### $${\color{lightblue} 1. \space Gather \space the \space data}$$
