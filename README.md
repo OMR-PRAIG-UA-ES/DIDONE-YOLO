@@ -13,13 +13,20 @@
 <p align="center">
   <a href="#about">About</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#acknowledgments">Acknowledgments</a> •
-  <a href="#license">License</a>
+  <a href="#acknowledgments">Acknowledgments</a>
 </p>
 
 ## About
 
-Describe the work.
+This repository focuses on Document Analysis as the first phase of Optical Music Recognition (OMR) for classical manuscripts, specifically leveraging the DIDONE dataset. The goal is to develop and train a YOLO model to accurately detect and classify structural elements within handwritten musical scores, laying the foundation for downstream transcription processes.
+
+---
+
+#### <ins>Why Focus on Document Analysis?</ins>
+
+End-to-end transcription requires precise detection of musical components as input. By isolating the document analysis phase, this repository ensures the foundation for later processes is reliable and accurate. Separating concerns between layout detection and symbolic recognition improves performance and allows targeted optimizations for each phase.
+
+This repository complements a separate project dedicated to end-to-end transcription, ensuring modularity and scalability for future extensions.
 
 ## How To Use
 
@@ -69,7 +76,3 @@ Where `PATH_TO_CHECKPOINT`is the path to the checkpoint file of the trained YOLO
 ## Acknowledgments
 
 This code is part of REPERTORIUM project, funded by the European Union’s Horizon Europe programme under grant agreement No 101095065.
-
-## License
-
-This work is under a [MIT](LICENSE) license.
