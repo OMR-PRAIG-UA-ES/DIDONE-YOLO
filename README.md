@@ -55,7 +55,7 @@ Next, create a Docker container from the image built in the previous step. The c
 docker run -itd --rm -v ./:/workspace --name yolo yolo-classical
 ```
 
-> It is important to mount correctly the volume. It ensures that project data will be consistent between the host and the container.
+> It is important to correctly mount the volume. It ensures that project data will be consistent between the host and the container.
 
 #### $${\color{lightblue} 3. \space Attach \space to \space the \space container}$$
 
